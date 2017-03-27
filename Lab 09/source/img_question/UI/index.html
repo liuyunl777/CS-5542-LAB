@@ -1,0 +1,55 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head>-->
+  <!--<meta charset="utf-8" />-->
+  <!--<link rel="icon" type="image/png" href="/UMKC_fav.jpg" />-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">-->
+  <!--<link rel="stylesheet" type="text/css" href="src/css/mystyle.css">-->
+<!--</head>-->
+
+<!--<body>-->
+  <!--<div id="app"></div>-->
+  <!--<script src="dist/bundle.js"></script>-->
+<!--</body>-->
+
+<!--</html>-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+  <script language="javascript">
+      function change(){
+          document.getElementById("i1").src= in1.value ;
+      };
+
+  </script>
+</head>
+
+<body>
+<div id="imgdisplay" style="width: 700px:">
+  <img id="i1" src=" " style="width: 260px;height: 300px;border: solid;color: antiquewhite">
+
+  <div id="preview" style="width: 700px;height:auto">
+    <input id="in1" placeholder="type in the pic url" style="">
+
+    <button onClick="change()" style="width: 130px;background-color: bisque">click to preview img</button>
+  </div>
+  <div>
+    <input id="in2"  placeholder="question about the img">
+
+    <button style="width: 130px;background-color: antiquewhite" onClick="answer()">check the answer</button>
+    <script language="javascript">
+        function answer(){
+            document.getElementById("ppp").innerHTML ="the answer is : this picture is talking about ants"  ;
+        }
+    </script>
+  </div>
+  <p id="ppp">the answer is : </p>
+</div>
+
+
+
+</body>
+</html>

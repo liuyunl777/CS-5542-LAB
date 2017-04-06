@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<script type="text/javascript">
+ function getPath(obj,fileQuery,transImg) {
+ 
+  var imgSrc = '', imgArr = [], strSrc = '' ;
+ 
+  if(window.navigator.userAgent.indexOf("MSIE")>=1){ 
+  if(obj.select){
+   obj.select();
+   var path=document.selection.createRange().text;
+   alert(path) ;
+   obj.removeAttribute("src");
+   imgSrc = fileQuery.value ;
+   imgArr = imgSrc.split('.') ;
+   strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+   if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+   obj.setAttribute("src",transImg);
+   obj.style.filter=
+    "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+path+"', sizingMethod='scale');"; 
+   }else{
+ 
+   throw new Error('File type Error! please image file upload..'); 
+   
+   }
+  }else{
+   imgSrc = fileQuery.value ;
+   imgArr = imgSrc.split('.') ;
+   strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+   if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+   obj.src = fileQuery.value ;
+   }else{
+   
+   throw new Error('File type Error! please image file upload..') ;
+   
+   }
+ 
+  }
+ 
+  } else{
+  var file =fileQuery.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e){
+ 
+   imgSrc = fileQuery.value ;
+   imgArr = imgSrc.split('.') ;
+   strSrc = imgArr[imgArr.length - 1].toLowerCase() ;
+   if(strSrc.localeCompare('jpg') === 0 || strSrc.localeCompare('jpeg') === 0 || strSrc.localeCompare('gif') === 0 || strSrc.localeCompare('png') === 0){
+   obj.setAttribute("src", e.target.result) ;
+   }else{
+  
+   throw new Error('File type Error! please image file upload..') ;
+  
+   }
+ 
+   
+  }
+  reader.readAsDataURL(file);
+  }
+ }
+ 
+ function show(){
+
+  var file_img=document.getElementById("img"),
+  iptfileupload = document.getElementById('iptfileupload') ;
+  getPath(file_img,iptfileupload,file_img) ;
+ }
+ </script>
+</head>
+
+<body>
+<div>
+<form action=" " method="post" name="myform">
+ <input type="file" id="iptfileupload" onchange="show()" value=" " />
+ <img src="1.jpg" alt=" " id="img" style="width: 400px;height: 400px"/>
+</form>
+</div>
+<div>
+	<input placeholder="e.g. topic..."><input type="button" style="width: 100px;" value="check answer">
+</div>
+<p>the answer is: the picture is talking about grape</p>
+</body>
+</html>
